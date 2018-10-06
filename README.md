@@ -24,3 +24,5 @@ vSRX-3 ansible_host=172.16.1.43
 ansible_user=admin
 ansible_ssh_pass=xxxxxx
 ansible_port=22
+
+made changes from local git server
