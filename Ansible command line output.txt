@@ -1,0 +1,48 @@
+[keith@AnsibleServer ~]$ ansible all -i /etc/ansible/hosts -m raw -a "show version"
+vSRX-1 | SUCCESS | rc=0 >>
+Hostname: SRX1
+Model: vsrx
+Junos: 15.1X49-D140.2
+JUNOS Software Release [15.1X49-D140.2]
+Shared connection to 172.16.1.41 closed.
+
+
+vSRX-2 | SUCCESS | rc=0 >>
+Hostname: SRX2
+Model: vsrx
+Junos: 15.1X49-D140.2
+JUNOS Software Release [15.1X49-D140.2]
+Shared connection to 172.16.1.42 closed.
+
+--------------------------------------------------------
+
+[keith@AnsibleServer ~]$ ansible all -i /etc/ansible/hosts -m raw -a "show arp"
+vSRX-2 | SUCCESS | rc=0 >>
+MAC Address       Address         Name                      Interface               Flags
+fe:00:00:00:00:04 128.0.0.16      128.0.0.16                em0.0                   none
+00:0c:29:a3:f2:65 172.16.1.100    172.16.1.100              fxp0.0                  none
+00:0c:29:89:58:ca 172.16.2.41     172.16.2.41               ge-0/0/0.0              none
+00:0c:29:76:00:30 172.16.3.43     172.16.3.43               ge-0/0/1.0              none
+aa:bb:cc:dd:ee:ff 192.168.1.1     192.168.1.1               em1.32768               none
+Total entries: 5
+Shared connection to 172.16.1.42 closed.
+
+
+vSRX-1 | SUCCESS | rc=0 >>
+MAC Address       Address         Name                      Interface               Flags
+fe:00:00:00:00:04 128.0.0.16      128.0.0.16                em0.0                   none
+00:0c:29:a3:f2:65 172.16.1.100    172.16.1.100              fxp0.0                  none
+00:0c:29:c2:25:d3 172.16.2.42     172.16.2.42               ge-0/0/0.0              none
+aa:bb:cc:dd:ee:ff 192.168.1.1     192.168.1.1               em1.32768               none
+Total entries: 4
+Shared connection to 172.16.1.41 closed.
+
+
+vSRX-3 | SUCCESS | rc=0 >>
+MAC Address       Address         Name                      Interface               Flags
+fe:00:00:00:00:04 128.0.0.16      fpc0                      em0.0                   none
+00:0c:29:a3:f2:65 172.16.1.100    172.16.1.100              fxp0.0                  none
+00:0c:29:c2:25:dd 172.16.3.42     172.16.3.42               ge-0/0/1.0              none
+aa:bb:cc:dd:ee:ff 192.168.1.1     192.168.1.1               em1.32768               none
+Total entries: 4
+Shared connection to 172.16.1.43 closed.
